@@ -40,8 +40,8 @@ app.post('/addCake', function(request, result){
     connection.end();
 });
 
-app.get('/getcake', function(req, res, next){
-    connection.connect();
+app.get('/getCakes', function(req, res, next){
+
 
     connection.query('SELECT * FROM Cake', function(err, rows, fields){
         if(err) throw err;
@@ -60,12 +60,11 @@ app.get('/getcake', function(req, res, next){
             cake_array.push(cake);
 
         }
-        res.send(cake_array);
+        res.json(cake_array);
     });
-    connection.end();
+
 });
 app.get('/addcake', function(req, res, next) {
-    connection.connect();
     var name = 'paxlava';
     var brand = 'Grand Candy';
     var price = 250;
@@ -92,7 +91,6 @@ app.get('/addcake', function(req, res, next) {
 //    console.log("dfsgsag");
 //    connection.end();
     });
-    connection.end();
 });
 
 http.createServer(app).listen(3001, function(){

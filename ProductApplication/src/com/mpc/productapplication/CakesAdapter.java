@@ -11,12 +11,15 @@ import android.widget.TextView;
 
 public class CakesAdapter extends BaseAdapter{
 
-	ArrayList<CakeApplication> cakesArray;
+	private ArrayList<Cake> cakesArray = new ArrayList<Cake>();
 	private LayoutInflater mInflater;
 	
-	public CakesAdapter(ArrayList<CakeApplication> cakesList, Context context) {
-		this.cakesArray = cakesList;
+	public CakesAdapter(Context context) {
 		mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+	}
+	
+	public void setCakesArray(ArrayList<Cake> array){
+		this.cakesArray = array;
 	}
 	
 	@Override
@@ -46,10 +49,10 @@ public class CakesAdapter extends BaseAdapter{
 		TextView type  = (TextView) row.findViewById(R.id.row_type);
 		TextView brand = (TextView)row.findViewById(R.id.row_brand);
 		
-		CakeApplication cake = cakesArray.get(position);
+		Cake cake = cakesArray.get(position);
 		name.setText(cake.getName());
-		type.setText(cake.getType());
-		brand.setText(cake.getBrand());
+		//type.setText(cake.getType());
+		//brand.setText(cake.getBrand());
 		
 		return row;
 	}

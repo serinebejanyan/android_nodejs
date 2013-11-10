@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
 	Button mSubmit;
 	Button mGet;
 
-	ArrayList<CakeApplication> CakeArray = new ArrayList<CakeApplication>();
+	ArrayList<Cake> CakeArray = new ArrayList<Cake>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				CakeApplication cake = new CakeApplication();
+				Cake cake = new Cake();
 
 				cake.setBrand(mBrand.getText().toString());
 				cake.setPrice(Float.valueOf(mPrice.getText().toString()));
@@ -76,8 +76,8 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	public static ArrayList<CakeApplication> sortPrice(
-			ArrayList<CakeApplication> priceArray) {
+	public static ArrayList<Cake> sortPrice(
+			ArrayList<Cake> priceArray) {
 		return null;
 	}
 
@@ -89,11 +89,11 @@ public class MainActivity extends Activity {
 	}
 
 	class ServerCommunicationTask extends
-			AsyncTask<CakeApplication, Void, String> {
+			AsyncTask<Cake, Void, String> {
 
 		@Override
-		protected String doInBackground(CakeApplication... params) {
-			CakeApplication cake = params[0];
+		protected String doInBackground(Cake... params) {
+			Cake cake = params[0];
 			JSONObject json = new JSONObject();
 			try {
 				json.put("name", cake.getName());
@@ -122,7 +122,7 @@ public class MainActivity extends Activity {
 	}
 
 	static void doHttpRequest(JSONObject requestParam) {
-		final String SERVER_URL = "http://192.168.0.77:3001/addCake";
+		final String SERVER_URL = "http://127.0.0.1:3001/addCake";
 		URL url;
 		try {
 			url = new URL(SERVER_URL);

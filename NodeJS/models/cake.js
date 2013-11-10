@@ -17,7 +17,7 @@ exports.cake = function(){
         return this.name;
     }
     this.set_name = function(name) {
-        this.username = name;
+        this.name = name;
     }
 
     this.get_brand = function(){
@@ -30,7 +30,7 @@ exports.cake = function(){
         return this.price;
     }
     this.set_price = function(price){
-        this.age = price;
+        this.price = price;
     }
     this.get_type = function(){
         return this.type;
